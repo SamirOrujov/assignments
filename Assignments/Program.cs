@@ -1,51 +1,24 @@
-﻿Gun();
-static void Gun()
+﻿using System;
+
+class Reversed
 {
-    Console.WriteLine("1. Gulleni tek tek at");
-    Console.WriteLine("2. Gullenin hamisini birden at");
-    Console.WriteLine("3. Mermini yeniden doldur");
-    Console.WriteLine("4. Oyundan chix");
-    Console.WriteLine("5. Mermi sayini goster");
 
-    int input = int.Parse(Console.ReadLine());
-    int bullet = 30;
-
-    while (input < 6 && input > 0)
+    public static string Reverse(string Input)
     {
-        while (input < 1 && input > 5)
+        char[] charArray = Input.ToCharArray();
+
+        string reversedString = String.Empty;
+
+        for (int i = charArray.Length - 1; i > -1; i--)
         {
-            Console.WriteLine("Duzgun reqem daxil edin");
-            input = int.Parse(Console.ReadLine());
+            reversedString += charArray[i];
         }
 
-        while (input == 1 && bullet > 0)
-        {
-            Console.WriteLine($"Qalan gulle sayi: {bullet -= 1}");
-            input = int.Parse(Console.ReadLine());
-        }
+        return reversedString;
+    }
 
-        while (input == 2 && bullet > 0)
-        {
-            Console.WriteLine($"Gulleler atildi: {bullet = 0}");
-            input = int.Parse(Console.ReadLine());
-        }
-
-        while (input == 3)
-        {
-            Console.WriteLine($"Gulleler dolduruldu: {bullet = 30}");
-            input = int.Parse(Console.ReadLine());
-        }
-
-        while (input == 4)
-        {
-            Console.WriteLine("Oyundan cixildi");
-            return;
-        }
-
-        while (input == 5)
-        {
-            Console.WriteLine($"Qalan merminiz: {bullet}");
-            input = int.Parse(Console.ReadLine());
-        }
+    static void Main(string[] args)
+    {
+        Console.WriteLine(Reverse("Salam necesen"));
     }
 }
