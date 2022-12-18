@@ -1,24 +1,38 @@
-﻿using System;
+﻿using C_task_class;
 
-class Reversed
+Student student1 = new Student();
+
+student1.Create("Samir", "Orucov", 328, 80, true);
+
+Console.WriteLine("Istediyiniz emeliyyati secin: ");
+Operations();
+
+bool control = true;
+
+while (control)
 {
-
-    public static string Reverse(string Input)
+    string choise = (Console.ReadLine());
+    switch (choise)
     {
-        char[] charArray = Input.ToCharArray();
-
-        string reversedString = String.Empty;
-
-        for (int i = charArray.Length - 1; i > -1; i--)
-        {
-            reversedString += charArray[i];
-        }
-
-        return reversedString;
+        case "1":
+            student1.NameAndSurname();
+            break;
+        case "2":
+            student1.AllValues();
+            break;
+        case "3":
+            student1.Exam();
+            break;
+        case "4":
+            control = false;
+            break;
     }
+}
 
-    static void Main(string[] args)
-    {
-        Console.WriteLine(Reverse("Salam necesen"));
-    }
+static void Operations()
+{
+    Console.WriteLine("1. Telebenin ad ve soyadini goster");
+    Console.WriteLine("2. Telebenin butun melumatlarini goster");
+    Console.WriteLine("3. Novbeti imtahan sansi");
+    Console.WriteLine("4. Cixis");
 }
