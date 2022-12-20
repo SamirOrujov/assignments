@@ -1,38 +1,25 @@
-﻿using C_task_class;
+﻿using Access_modifiers;
 
-Student student1 = new Student();
+Product product1 = new Product("sud", 2, 50);
 
-student1.Create("Samir", "Orucov", 328, 80, true);
+int stock = product1.Count;
 
-Console.WriteLine("Istediyiniz emeliyyati secin: ");
-Operations();
+int income = product1.TotalIncome;
 
-bool control = true;
+int price = product1.price;
 
-while (control)
+while (stock>0)
 {
-    string choise = (Console.ReadLine());
-    switch (choise)
+    Console.Write("Mehsuldan nece eded satmaq istediyinizi daxil edin: ");
+    int input = Convert.ToInt32(Console.ReadLine());
+    if (input<=stock)
     {
-        case "1":
-            student1.NameAndSurname();
-            break;
-        case "2":
-            student1.AllValues();
-            break;
-        case "3":
-            student1.Exam();
-            break;
-        case "4":
-            control = false;
-            break;
+        stock -= input;
+        income = input * price;
+        Console.WriteLine($"Mehsuldan {input} eded satildi. Umumi gelir: {income} azn Qalan: {stock} eded");
     }
-}
-
-static void Operations()
-{
-    Console.WriteLine("1. Telebenin ad ve soyadini goster");
-    Console.WriteLine("2. Telebenin butun melumatlarini goster");
-    Console.WriteLine("3. Novbeti imtahan sansi");
-    Console.WriteLine("4. Cixis");
+    else
+    {
+        Console.WriteLine($"Istediyiniz sayda mehsul qalmayib. Qalan: {stock}");
+    }
 }
