@@ -1,9 +1,53 @@
-﻿using C_practice_task.Models1.Models2;
+﻿Test test = new();
 
-Student student = new();
+class Test
+{
+    public Test()
+    {
+        test(5);
+    }
+    void test()
+    {
 
-Teacher teacher = new();
+    }
 
-teacher.Sum();
+    void test(int num)
+    {
 
-student.Sum();
+    }
+}
+
+interface ICalculate
+{
+    void Sum();
+    virtual void Sum2()
+    {
+
+    }
+}
+
+class B : ICalculate
+{
+    public void Sum()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Sum2()
+    {
+        throw new NotImplementedException();
+    }
+}
+
+class A : ICalculate
+{
+    public void Sum()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Sum2()
+    {
+        throw new NotImplementedException();
+    }
+}
