@@ -1,25 +1,44 @@
-﻿using Access_modifiers;
+﻿using Calculator;
+using System.Net.Http.Headers;
 
-Product product1 = new Product("sud", 2, 50);
+Calculate generalInput = new();
 
-int stock = product1.Count;
+Console.Write("1ci ededi daxil ediniz: ");
 
-int income = product1.TotalIncome;
+generalInput.input1 = int.Parse(Console.ReadLine());
 
-int price = product1.price;
+Console.Write("Emeliyyat isaresini daxil ediniz: ");
 
-while (stock>0)
+generalInput.input2 = (Console.ReadLine());
+
+bool check = string.IsNullOrWhiteSpace(generalInput.input2); 
+
+Console.Write("2ci ededi daxil ediniz: ");
+
+generalInput.input3 = int.Parse(Console.ReadLine());
+
+if (generalInput.input2 == "+")
 {
-    Console.Write("Mehsuldan nece eded satmaq istediyinizi daxil edin: ");
-    int input = Convert.ToInt32(Console.ReadLine());
-    if (input<=stock)
-    {
-        stock -= input;
-        income = input * price;
-        Console.WriteLine($"Mehsuldan {input} eded satildi. Umumi gelir: {income} azn Qalan: {stock} eded");
-    }
-    else
-    {
-        Console.WriteLine($"Istediyiniz sayda mehsul qalmayib. Qalan: {stock}");
-    }
+    var sum = generalInput.Sum();
+    Console.WriteLine($"Daxil etdiyiniz ededlerin cemi: {sum}");
 }
+else if (generalInput.input2 == "-")
+{
+    var extract = generalInput.Extract();
+    Console.WriteLine($"Daxil etdiyiniz ededlerin ferqi: {extract}");
+}
+else if (generalInput.input2 == "*")
+{
+    var multiply = generalInput.Multiply();
+    Console.WriteLine($"Daxil etdiyiniz ededlerin hasili: {multiply}");
+}
+else if (generalInput.input2 == "/")
+{
+    var divide = generalInput.Divide();
+    Console.WriteLine($"Daxil etdiyiniz ededlerin nisbeti: {divide}");
+}
+else
+{
+    Console.WriteLine("Dogru emeliyyat isaresi daxil ediniz");
+}
+
