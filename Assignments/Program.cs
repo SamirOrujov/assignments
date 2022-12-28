@@ -1,44 +1,54 @@
-﻿using Calculator;
-using System.Net.Http.Headers;
+﻿using Mini_consol_app;
+using Mini_consol_app.Services.Implementations;
+using Mini_consol_app.Services.Interfaces;
 
-Calculate generalInput = new();
+StudentService student1 = new();
 
-Console.Write("1ci ededi daxil ediniz: ");
+Console.WriteLine("1. Yeni telebe yarat \n2. Telebe sil \n3. Redakte et \n4. Butun melumatlar \n5. Telebe tap\n0. Cixis");
 
-generalInput.input1 = int.Parse(Console.ReadLine());
+string input = Console.ReadLine();
 
-Console.Write("Emeliyyat isaresini daxil ediniz: ");
-
-generalInput.input2 = (Console.ReadLine());
-
-bool check = string.IsNullOrWhiteSpace(generalInput.input2); 
-
-Console.Write("2ci ededi daxil ediniz: ");
-
-generalInput.input3 = int.Parse(Console.ReadLine());
-
-if (generalInput.input2 == "+")
+while (input!="0")
 {
-    var sum = generalInput.Sum();
-    Console.WriteLine($"Daxil etdiyiniz ededlerin cemi: {sum}");
-}
-else if (generalInput.input2 == "-")
-{
-    var extract = generalInput.Extract();
-    Console.WriteLine($"Daxil etdiyiniz ededlerin ferqi: {extract}");
-}
-else if (generalInput.input2 == "*")
-{
-    var multiply = generalInput.Multiply();
-    Console.WriteLine($"Daxil etdiyiniz ededlerin hasili: {multiply}");
-}
-else if (generalInput.input2 == "/")
-{
-    var divide = generalInput.Divide();
-    Console.WriteLine($"Daxil etdiyiniz ededlerin nisbeti: {divide}");
-}
-else
-{
-    Console.WriteLine("Dogru emeliyyat isaresi daxil ediniz");
-}
+    switch (input)
+    {
+        case "1":
+            Console.Write("Telebenin ad, soyad ve ortalamasini daxil edin: ");
+            int input1 = int.Parse(Console.ReadLine());
+            student1.Create("Samir", "Orucov", 71.5);
+            break;
 
+        case "2":
+            Console.WriteLine("Silmek istediyiniz telebenin ID`ni daxil edin: ");
+            int input2 = int.Parse(Console.ReadLine());
+            student1.Delete(1);
+            break;
+
+        case "3":
+            Console.WriteLine("Melumatlarini deyismek istediyiniz telebenin ID`ni daxil edin: ");
+            int input3 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Yeni ad ve soyadi daxil edin: ");
+            student1.Edit(1, "Samir", "Orucov");
+            break;
+
+        case "4":
+            Console.WriteLine("Qrupdaki telebeler:\n");
+            student1.GetAll();
+            break;
+
+        case "5":
+            Console.WriteLine("Telebe ID daxil edin: ");
+            int input4 = int.Parse(Console.ReadLine());
+            student1.GetById(1);
+            break;
+
+        case "0":
+            input = "0";
+            Console.WriteLine("Cixis edildi");
+            break;
+
+        default:
+            Console.WriteLine("Emeliyyat yalnisdir");
+            break;
+    }
+}

@@ -1,59 +1,45 @@
-﻿using System;
+﻿using Mini_consol_app.Services.Implementations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace C_task_class
+namespace Mini_consol_app
 {
-    public class Student
+    public class Student : StudentService
     {
-        public string name;
-        public string surName;
-        public int group;
-        public int point;
-        public bool isGraduated;
-
-        public void Create(string _name, string _surName, int _group, int _point, bool _isGraduated)
+        StudentService student1 = new();
+        private int _id;
+        private string _name;
+        private string _surname;
+        private float _average;
+        public int Id
         {
-            name = _name;
-            surName = _surName;
-            group = _group;
-            point = _point;
-            isGraduated = _isGraduated;
+            get { return _id; }
+            set { _id = value; }
         }
 
-        public void NameAndSurname()
-        {
-            string adSoyad = name + " " + surName;
-            Console.WriteLine(adSoyad);
+        public string Name {
+            get { return _name; }
+            set { _name = value; }
         }
 
-        public void AllValues()
+        public string Surname
         {
-            if (isGraduated == true)
-            {
-                Console.WriteLine(name + " " + surName + " " +
-            group + " " + point + " " + "Mezundur");
-            }
-            else
-            {
-                Console.WriteLine(name + " " + surName + " " +
-            group + " " + point + " " + "Mezun deyil");
-            }
+            get { return _surname; }
+            set { _surname = value; }
         }
 
-        public void Exam()
+        public float Average
         {
-            if (point >= 80)
-                {
-                Console.WriteLine("2ci imtahana giris mumkundur.");
-                }
-                else
-                {
-                Console.WriteLine("2ci imtahana giris mumkun deyil.");
-                }
+            get { return _average; }
+            set { _average = value; }
+        }
+
+        public Student()
+        {
+            Id++;
         }
     }
 }
